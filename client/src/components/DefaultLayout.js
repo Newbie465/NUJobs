@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Layout, Menu } from 'antd';
 import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
   UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
+  MenuOutlined,
+  CloseOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ class DefaultLayout extends React.Component {
     return (
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed} style={{backgroundColor:"white"}} >
-          <div className="logo"><h1>{this.state.collapsed? <h1 >NU</h1>:<h1 >NUjobs</h1> }</h1></div>
+          <div className="logo"><h1>{this.state.collapsed? <h1 >NU</h1>:<h1 >NUJOBS</h1> }</h1></div>
           <Menu theme="light" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
             <Menu.Item key="/" icon={<UserOutlined />}>
                 <Link to="/">Home</Link>
@@ -46,7 +46,7 @@ class DefaultLayout extends React.Component {
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+            {React.createElement(this.state.collapsed ? MenuOutlined : CloseOutlined, {
               className: 'trigger',
               onClick: this.toggle,
             })}
