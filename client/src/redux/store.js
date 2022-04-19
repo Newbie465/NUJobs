@@ -4,10 +4,12 @@ import {createStore, applyMiddleware} from 'redux'
 
 import thunk from 'redux-thunk'
 import { jobsReducer} from './reducers/jobsReducer'
+import {loaderReducer} from './reducers/loaderReducer'
 
 const rootReducer = combineReducers(
     {
         jobsReducer: jobsReducer,
+        loaderReducer: loaderReducer
     }
 )
 
