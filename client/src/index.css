@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Poppins', sans-serif !important;
+  background-image: url('D:/Study/Capstone/capstone-jobportal/client/src/bgImage.png');
 }
 
 code {
@@ -35,7 +36,15 @@ code {
 }
 
 .site-layout .site-layout-background {
-  background: #fff;
+  background: rgb(241, 241, 241);
+ 
+}
+
+.bkimage{
+  background-image: url('D:/Study/Capstone/capstone-jobportal/client/src/bgImage1.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 50% !important;
 }
 
 
@@ -52,12 +61,13 @@ code {
 .logo{
   margin-top: 12px;
   text-align: center;
-  font-size: 25px;
+  font-size: 24px;
 }
 
 .logo h1{
   color: black;
   font-weight: bold;
+  font-size: 28px;
 
 }
 
@@ -82,6 +92,46 @@ code {
 .flex{
   display : flex !important;
   align-items : center !important;
+}
+
+p{
+  font-weight: 500 !important;
+  margin : 2px !important;
+  padding : 2px !important;
+  font-size : 16px !important;
+}
+
+.bs{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.job-div{
+  border-radius: 15px !important;
+  background-color : #fff !important;
+}
+
+.job-btn{
+  background-color : #90000b !important;
+  color : #fff !important;
+  border-radius : 5px !important;
+  border : 0px;
+}
+
+.title{
+  font-weight : bold !important;
+  font-size: 24px !important;
+}
+
+.job-div:hover{
+  background-color : #e17780 !important;
+  color : #fff !important;
+  border-color: #d75560;
+  /* border: 5px solid #e17780 */
+}
+
+.company{
+  font-size : 20px !important;
+  font-weight : 550 !important;
 }
 
 
