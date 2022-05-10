@@ -2,17 +2,18 @@ import React, {useState} from 'react'
 import DefaultLayout from '../components/DefaultLayout'
 import {Row, Col, Form, Tabs, Input, Button, Select} from 'antd'
 import TextArea from 'antd/lib/input/TextArea';
-import { Link } from 'react-router-dom'
-import { useDispatch} from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+import { useDispatch, useSelector} from 'react-redux'
 import { updateUser} from "../redux/actions/userActions"
-import { postJob } from '../redux/actions/jobActions'
+import { editJob } from '../redux/actions/jobActions'
 const { TabPane } = Tabs;
 const {Option} = Select
-function PostJob() {
+function EditJob({match}) {
 
   const dispatch = useDispatch()
   const[activetab, setActiveTab] = useState('1')
   const[jobInfo, setJobInfo] = useState({})
+  const { id } = useParams()
   function firstFormFinish(values){
     setJobInfo(values)
     setActiveTab('2')
@@ -20,18 +21,23 @@ function PostJob() {
 
   function onFinalFisnish(values){
     const finalObj = {...jobInfo, ...values}
+    finalObj._id = id
     console.log(finalObj)
-    dispatch(postJob(finalObj))
+    dispatch(editJob(finalObj))
   }
+
+  const { jobs }  = useSelector(state=>state.jobsReducer)
+
+  const job = jobs.find(job=>job._id==id)
 
   return (
     <div className="profile">
         <DefaultLayout>
 
-        <h1><b>Post Job</b></h1>
+        <h1><b>Edit Job</b></h1>
         <Tabs defaultActiveKey="1" activeKey={activetab}>
           <TabPane tab="Job Info" key="1" className = 'tabs'>
-            <Form layout='vertical' onFinish={firstFormFinish} initialValues=''>
+            <Form layout='vertical' onFinish={firstFormFinish} initialValues={job}>
               <Row gutter={[16, 16]}>
                 <Col lg={8} sm={24}>
                   
@@ -119,7 +125,7 @@ function PostJob() {
             </Form>
           </TabPane>
           <TabPane tab="Company Info" key="2" className = 'tabs'>
-            <Form  initialValues='' layout='vertical' onFinish={onFinalFisnish}>
+            <Form  initialValues={job} layout='vertical' onFinish={onFinalFisnish}>
             <Row gutter={[16, 16]}>
                 <Col lg={8} sm={24}>
                   
@@ -156,7 +162,7 @@ function PostJob() {
                   Previous
                 </Button>
                 <Button htmlType='submit' className='job-btn'>
-                  Post Job
+                  Edit Job
                 </Button>
                             
               
@@ -169,4 +175,4 @@ function PostJob() {
   )
 }
 
-export default PostJob
+export default EditJob

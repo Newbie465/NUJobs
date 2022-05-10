@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 body {
   margin: 0;
@@ -7,8 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Poppins', sans-serif !important;
-  background-image: url('./bgImage.png');
+  font-family: 'Poppins', sans-serif !important
 }
 
 code {
@@ -133,5 +132,78 @@ p{
   font-size : 20px !important;
   font-weight : 550 !important;
 }
+
+.JobInfo {
+  background-color : #90000b !important;
+  color : #fff !important;
+  border-radius: 15px !important;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.job-btn-back{
+  
+  border-radius : 5px !important;
+  border : 0px solid black;
+}
+
+.JobInfo h4 {
+  color : #fff !important;
+}
+
+.JobInfo h1 {
+  color : #fff !important;
+}
+
+.loginForm {
+  background-color : #e17780;
+  height: 100vh !important;
+}
+
+.loginLogo{
+  background-image: url('./bgImage.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 60% !important;
+  height: 100vh !important;
+}
+
+.login{
+  position: relative;
+  padding: 50px;
+  top : 20% ;
+
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.profile Input{
+  background-color: #EBEBEB;
+  border-radius: 7px;
+}
+
+.tabs{
+  background-color : #fff;
+  padding : 20px;
+  border-radius : 7px;
+}
+
+.profile TextArea{
+  background-color: #EBEBEB;
+  border-radius: 7px;
+  border: 0px;
+}
+
+.select{
+  background-color: #EBEBEB !important;
+  border-radius: 7px !important;
+  border: 0px !important;
+}
+
+.ant-message{
+  z-index: 99999 !important;
+}
+
 
 
