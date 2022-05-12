@@ -118,7 +118,7 @@ function PostedJob() {
   return (
     <div>
         <DefaultLayout>
-            <h1><b>Posted Job</b></h1>
+            <h1><b>Dashboard</b></h1>
             <Table columns={columns} dataSource={dataSource} />
             <Modal title="Applied Candidates" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={800} closable={false}>
               <CandidatesList/>

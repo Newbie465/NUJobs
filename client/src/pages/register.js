@@ -1,5 +1,5 @@
 import React from "react"
-import { Row, Col, Form, Input, Button, message } from 'antd';
+import { Row, Col, Form, Input, Button, message, Checkbox } from 'antd';
 import { useDispatch} from 'react-redux';
 import { registerUser } from "../redux/actions/userActions";
 
@@ -49,6 +49,10 @@ function Register(){
                             rules={[{ required: true, message: 'Please input your password!' }]}
                         >
                             <Input.Password placeholder="Confirm Password"/>
+                        </Form.Item>
+
+                        <Form.Item name="isRecruiter" valuePropName="checked" >
+                            <Checkbox>Are you a Recruiter?</Checkbox>
                         </Form.Item>
 
                         <Form.Item >

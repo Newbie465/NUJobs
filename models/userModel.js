@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema(
 
     about: { type: String , default:''},
     address: { type: String , default:''},
+    isRecruiter : { type: Boolean , default: false},
 
     education: { type: [] , default: [''] },
     skills: { type: [] ,default: ['']  },

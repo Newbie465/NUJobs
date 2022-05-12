@@ -28,8 +28,6 @@ function App() {
     dispatch(getAllJobs());
     dispatch(getAllUsers())
   }, []);
-
-  const user = localStorage.getItem('user');
   return (
     <div className="App">
       {loader && (<div className="text-center">
@@ -38,15 +36,14 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
-          <Route exact path="/appliedjobs" element={<ProtectedRoute><AppliedJobs /></ProtectedRoute>}></Route>
-          <Route exact path="/postjob" element={<ProtectedRoute><PostJob /></ProtectedRoute>}></Route>
-          <Route exact path="/editjob/:id" element={<ProtectedRoute><EditJob /></ProtectedRoute>}></Route>
-          <Route exact path="/posted" element={<ProtectedRoute><PostedJob /></ProtectedRoute>}></Route>
+          <Route exact path="/" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
+          <Route exact path="/appliedjobs" element={<ProtectedRoute><NotRec><AppliedJobs /></NotRec></ProtectedRoute>}></Route>
+          <Route exact path="/postjob" element={<ProtectedRoute><Rec><PostJob /></Rec></ProtectedRoute>}></Route>
+          <Route exact path="/editjob/:id" element={<ProtectedRoute><Rec><EditJob /></Rec></ProtectedRoute>}></Route>
           <Route exact path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>}></Route>
           <Route exact path="/editprofile" element={<ProtectedRoute><Profile /></ProtectedRoute>}></Route>
-          <Route exact path="/jobs/:id" element={<ProtectedRoute><JobInfo /></ProtectedRoute>}></Route>
-          <Route exact path="/users/:id" element={<ProtectedRoute><UserInfo /></ProtectedRoute>}></Route>
+          <Route exact path="/jobs/:id" element={<ProtectedRoute><NotRec><JobInfo /></NotRec></ProtectedRoute>}></Route>
+          <Route exact path="/users/:id" element={<ProtectedRoute><Rec><UserInfo /></Rec></ProtectedRoute>}></Route>
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/register" element={<Register />}></Route>
         </Routes>
@@ -70,3 +67,45 @@ export function ProtectedRoute({ children }) {
   return children
 
 }
+
+export function Dashboard(){
+
+  const recruiter = JSON.parse(localStorage.getItem('user')).isRecruiter
+
+  console.log(recruiter)
+
+  if(recruiter) {
+    return <PostedJob />
+  }else{
+    return <Home />
+  }
+
+}
+
+export function Rec({ children }) {
+  
+  const user = JSON.parse(localStorage.getItem('user')).isRecruiter;
+  const location = useLocation()
+
+  if(!user){
+    return <Navigate to='/' state={{ from: location }} replace></Navigate>
+  }
+  
+  return children
+
+}
+
+export function NotRec({ children }) {
+  
+  const user = JSON.parse(localStorage.getItem('user')).isRecruiter;
+  const location = useLocation()
+
+  if(user){
+    return <Navigate to='/' state={{ from: location }} replace></Navigate>
+  }
+  
+  return children
+
+}
+
+

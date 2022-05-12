@@ -10,6 +10,9 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import Filter from './Filter';
+import { AiOutlineHome, AiOutlinePlusSquare, AiOutlineCheckSquare, AiOutlineUser } from 'react-icons/ai'
+import { BiLogOut } from 'react-icons/bi'
+import { FiUserCheck } from 'react-icons/fi'
 
 const { Header, Sider, Content } = Layout;
 // const uid = JSON.parse(localStorage.getItem('user'))._id
@@ -43,29 +46,44 @@ class DefaultLayout extends React.Component {
         <Sider trigger={null} collapsible collapsed={this.state.collapsed} 
         style={{position: 'sticky' , overflow : 'auto' , height:'100%' , top:0, backgroundColor:"white"}}>
           <div className="logo"><h1>{this.state.collapsed? <h1 >NU</h1>:<h1 >NUJobs</h1> }</h1></div>
-          <Menu theme="light" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
-      
-              <Menu.Item key="/" icon={<UserOutlined />}>
+          
+            {!user.isRecruiter ? <div className="">
+            <Menu theme="light" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
+              <Menu.Item key="/" icon={<AiOutlineHome />}>
                   <Link to="/">Home</Link>
               </Menu.Item>
-              <Menu.Item key="/appliedjobs" icon={<UploadOutlined />}>
-                  <Link to="/appliedjobs">Applied Jobs</Link>
+              <Menu.Item key="/appliedjobs" icon={<AiOutlineCheckSquare />}>
+                <Link to="/appliedjobs">Applied Jobs</Link>
               </Menu.Item>
-              <Menu.Item key="/postjob" icon={<UploadOutlined />}>
+              </Menu >
+            </div>
+              : <div>
+              <Menu theme="light" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
+              <Menu.Item key="/" icon={<AiOutlineHome />}>
+                  <Link to="/">Dashboard</Link>
+              </Menu.Item>
+                <Menu.Item key="/postjob" icon={<AiOutlinePlusSquare />}>
                   <Link to="/postjob">Post Jobs</Link>
               </Menu.Item>
-              <Menu.Item key="/posted" icon={<UploadOutlined />}>
-                  <Link to="/posted">Posted Jobs</Link>
-              </Menu.Item>
+              
+              </Menu >
+                
+                </div>}
+              
+              
+
+              
+
+            
     
-          </Menu >
+          
           
           <Menu theme="light" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
              
-            <Menu.Item key="/profile" icon={<VideoCameraOutlined />}>
+            <Menu.Item key="/profile" icon={<UserOutlined />}>
                 <Link to={`/profile`}>Profile</Link>
             </Menu.Item>
-            <Menu.Item key="/logout" icon={<VideoCameraOutlined />}>
+            <Menu.Item key="/logout" icon={<BiLogOut />}>
               <Link onClick={this.logout} to >Logout</Link>
             </Menu.Item>
 
@@ -83,10 +101,19 @@ class DefaultLayout extends React.Component {
               </div>
 
               <div>
-                <Filter />
+                {!user.isRecruiter && <Filter />}
+                
               </div>
 
-              <div>
+              <div className="flex mt-2">
+                {!user.isRecruiter ? 
+                  
+                  <AiOutlineUser style={{fontSize:25, marginTop:-10, marginRight: 5}}/> : 
+                  <FiUserCheck style={{fontSize:25, marginTop:-10, marginRight: 5}}/>
+
+                
+                }
+                
                 <h5 className="mr-3"><b>{user.username}</b></h5>
               </div>
 
