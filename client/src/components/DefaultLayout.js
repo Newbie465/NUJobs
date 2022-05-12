@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Space } from 'antd';
 import {
   UserOutlined,
   VideoCameraOutlined,
@@ -34,16 +34,32 @@ class DefaultLayout extends React.Component {
         style={{position: 'sticky' , overflow : 'auto' , height:'100%' , top:0, backgroundColor:"white"}}>
           <div className="logo"><h1>{this.state.collapsed? <h1 >NU</h1>:<h1 >NUJobs</h1> }</h1></div>
           <Menu theme="light" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
-            <Menu.Item key="/" icon={<UserOutlined />}>
-                <Link to="/">Home</Link>
-            </Menu.Item>
+      
+              <Menu.Item key="/" icon={<UserOutlined />}>
+                  <Link to="/">Home</Link>
+              </Menu.Item>
+              <Menu.Item key="/appliedjobs" icon={<UploadOutlined />}>
+                  <Link to="/appliedjobs">Applied Jobs</Link>
+              </Menu.Item>
+              <Menu.Item key="/postjob" icon={<UploadOutlined />}>
+                  <Link to="/postjob">Post Jobs</Link>
+              </Menu.Item>
+              <Menu.Item key="/posted" icon={<UploadOutlined />}>
+                  <Link to="/posted">Posted Jobs</Link>
+              </Menu.Item>
+    
+          </Menu >
+          
+          <Menu theme="light" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
+             
             <Menu.Item key="/profile" icon={<VideoCameraOutlined />}>
                 <Link to="/profile">Profile</Link>
             </Menu.Item>
-            <Menu.Item key="/appliedjobs" icon={<UploadOutlined />}>
-                <Link to="/appliedjobs">Applied Jobs</Link>
+            <Menu.Item key="/logout" icon={<VideoCameraOutlined />}>
+                <Link to="/login">Log-Out</Link>
             </Menu.Item>
           </Menu>
+          
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0, position: 'sticky' , overflow : 'auto' , top:0 , zIndex:9999, backgroundColor: 'white' }}>

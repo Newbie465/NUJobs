@@ -17,7 +17,7 @@ function Home() {
       <DefaultLayout>
         <Row gutter={[16, 16]}>
           {jobs.map((job) => {
-            return <Col lg={8} sm={24}>
+            return <Col lg={12} sm={24}>
               <div className="job-div bs m-1 p-3">
                   <p className = "title">{job.title}</p>
                   <p className = "company">{job.company}</p>
