@@ -26,11 +26,11 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home />}></Route>
-          <Route exact path="/appliedjobs" element={<AppliedJobs />}></Route>
-          <Route exact path="/postjob" element={<PostJob />}></Route>
-          <Route exact path="/profile" element={<Profile />}></Route>
-          <Route exact path="/jobs/:id" element={<JobInfo />}></Route>
+          <Route exact path="/" element={<Home />}></Route>                   //Home Page
+          <Route exact path="/appliedjobs" element={<AppliedJobs />}></Route> //Applied Jobs Page
+          <Route exact path="/postjob" element={<PostJob />}></Route>         //Post Jobs Page
+          <Route exact path="/profile" element={<Profile />}></Route>         //User Profile
+          <Route exact path="/jobs/:id" element={<JobInfo />}></Route>        //Jobs Page
         </Routes>
       </BrowserRouter>
     </div>
