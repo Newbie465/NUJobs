@@ -31,6 +31,7 @@ function App() {
       </div>)}
 
       <BrowserRouter>
+
           <Route exact path="/" element={<Home />} />
           <Route exact path="/appliedjobs" element={<AppliedJobs />}></Route>
           <Route exact path="/postjob" element={<PostJob />}></Route>
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/jobs/:id" element={<JobInfo />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/register" element={<Register />}></Route>
+
       </BrowserRouter>
     </div>
   );
