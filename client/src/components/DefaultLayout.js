@@ -9,8 +9,10 @@ import {
   CloseOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import Filter from './Filter';
 
 const { Header, Sider, Content } = Layout;
+// const uid = JSON.parse(localStorage.getItem('user'))._id
 
 class DefaultLayout extends React.Component {
   constructor(props) {
@@ -21,13 +23,21 @@ class DefaultLayout extends React.Component {
     
   }
 
+
+
   toggle = () => {
     this.setState({
       collapsed: !this.state.collapsed,
     });
   };
 
+  logout=()=>{
+    localStorage.removeItem('user')
+    window.location.reload()
+  }
+
   render() {
+    const user = JSON.parse(localStorage.getItem('user'))
     return (
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed} 
@@ -53,20 +63,34 @@ class DefaultLayout extends React.Component {
           <Menu theme="light" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
              
             <Menu.Item key="/profile" icon={<VideoCameraOutlined />}>
-                <Link to="/profile">Profile</Link>
+                <Link to={`/profile`}>Profile</Link>
             </Menu.Item>
             <Menu.Item key="/logout" icon={<VideoCameraOutlined />}>
-                <Link to="/login">Log-Out</Link>
+              <Link onClick={this.logout} to >Logout</Link>
             </Menu.Item>
+
           </Menu>
           
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0, position: 'sticky' , overflow : 'auto' , top:0 , zIndex:9999, backgroundColor: 'white' }}>
-            {React.createElement(this.state.collapsed ? MenuOutlined : CloseOutlined, {
-              className: 'trigger',
-              onClick: this.toggle,
-            })}
+            <div className="flex justify-content-between">
+              <div>
+                {React.createElement(this.state.collapsed ? MenuOutlined : CloseOutlined, {
+                  className: 'trigger',
+                  onClick: this.toggle,
+                })}
+              </div>
+
+              <div>
+                <Filter />
+              </div>
+
+              <div>
+                <h5 className="mr-3"><b>{user.username}</b></h5>
+              </div>
+
+            </div>
           </Header>
           <Content
             className="site-layout-background bkimage"

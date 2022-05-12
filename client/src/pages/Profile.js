@@ -29,7 +29,7 @@ function Profile() {
   return (
     <div className='profile'>
         <DefaultLayout>
-        <h1><b>Profile</b></h1>
+        <h1><b>Edit Profile</b></h1>
         <Tabs defaultActiveKey="1" activeKey={activetab}>
           <TabPane tab="Personal Info" key="1" className = 'tabs'>
             <Form layout='vertical' onFinish={onPersonInfoSubmit} initialValues={user}>

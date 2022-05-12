@@ -146,13 +146,18 @@ p{
   border : 0px solid black;
 }
 
-.JobInfo h4 {
+.JobInfo h3 {
   color : #fff !important;
 }
 
 .JobInfo h1 {
   color : #fff !important;
 }
+
+.JobInfo h5 {
+  color : #fff !important;
+}
+
 
 .loginForm {
   background-color : #e17780;
@@ -203,6 +208,14 @@ p{
 
 .ant-message{
   z-index: 99999 !important;
+}
+
+.edit{
+  width : 5%;
+}
+
+.search {
+  width : 800;
 }
 
 

@@ -1,6 +1,8 @@
 const express = require('express')
 const router  =  express.Router()
 const Job = require('../models/jobModel')
+const User = require('../models/userModel')
+const moment = require('moment')
 
 router.get('/getalljobs', async(req, res) => {
     
@@ -32,6 +34,42 @@ router.post('/editjob', async(req, res)=>{
       res.send('Job Updated Seccesfully')
     }catch(err){
       return res.status(400).json({err})
+    }
+})
+
+router.post('/applyjob', async(req, res) => {
+    const {user, job} = req.body
+
+    try{
+
+        const jobDetails = await Job.findOne({_id : job._id})
+
+        const applied = {
+            userid : user._id,
+            appliedDate : moment().format('MMM DD yyyy')
+        }
+
+        jobDetails.appliedCandidates.push(applied)
+
+        await jobDetails.save()
+
+        const userDetails = await User.findOne({_id : user._id})
+        
+        const appliedJob = {
+            jobid : job._id,
+            appliedDate : moment().format('MMM DD yyyy')
+        }
+
+        userDetails.appliedJobs.push(appliedJob)
+
+        await userDetails.save()
+
+        res.send('Job Applied Succesfully')
+
+    }catch(error){
+
+        return res.status(400).json({error})
+
     }
 })
 
