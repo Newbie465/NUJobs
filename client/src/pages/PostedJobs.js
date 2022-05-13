@@ -12,7 +12,7 @@ function PostedJob() {
   const alljobs = useSelector(state=>state.jobsReducer).jobs
   const allusers = useSelector((state) => state.usersReducer).users;
   const userid = JSON.parse(localStorage.getItem('user'))._id
-  const userjobs = alljobs.filter(jobs=>jobs.postedBy==userid)
+  const userJobs = alljobs.filter((job)=>job.postedBy==userid)
   const history = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedJob, setSelectedJob] = useState();
@@ -43,7 +43,7 @@ function PostedJob() {
             <AiFillEdit style={{fontSize:20}} onClick={() => {
                 history(`/editjob/${data.completeJobData._id}`);
               }} className='mr-2' />
-            <FaListAlt style={{fontSize:20}} onClick = {()=>{showModal(job)}}/>
+            <FaListAlt style={{fontSize:20}} onClick = {()=>{showModal(data.completeJobData)}}/>
         </div>
       }
     }
@@ -51,7 +51,7 @@ function PostedJob() {
 
   const dataSource = []
 
-  for(var job of userjobs){
+  for(var job of userJobs){
     var obj = {
       title: job.title,
       company: job.company,
@@ -62,9 +62,9 @@ function PostedJob() {
     dataSource.push(obj);
   }
 
-  const showModal = (job) => {
+  const showModal = (jobs) => {
     setIsModalVisible(true);
-    setSelectedJob(job);
+    setSelectedJob(jobs);
   };
 
   const handleOk = () => {
