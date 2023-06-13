@@ -1,5 +1,6 @@
 # capstone-jobportal
 
+check it out on https://nujob-006.netlify.app/ 
 
 This is a job finding portal website by the students of NIIT Univerisity.
 
