@@ -5,7 +5,7 @@ export const registerUser = (values, response) => async dispatch =>{
     dispatch({type:'LOADING', payload: true});
 
     try{
-        await axios.post('http://localhost:5000/api/users/register', values)
+        await axios.post('https://nujobs-backend.netlify.app/.netlify/functions/api/users/register', values)
         message.success("User Registered Successfully")
         setTimeout(() => {
             window.location.href = '/login'
@@ -27,7 +27,7 @@ export const loginUser = (values) => async dispatch =>{
     dispatch({type:'LOADING', payload: true});
 
     try{
-        const user = await axios.post('http://localhost:5000/api/users/login', values)
+        const user = await axios.post('https://nujobs-backend.netlify.app/.netlify/functions/api/users/login', values)
         message.success("User Logged-In Successfully")
         localStorage.setItem('user', JSON.stringify(user.data))
         setTimeout(() => {
@@ -53,7 +53,7 @@ export const updateUser = (values) => async dispatch =>{
     dispatch({type:'LOADING', payload: true});
 
     try{
-        const user = await axios.post('http://localhost:5000/api/users/update', values)
+        const user = await axios.post('https://nujobs-backend.netlify.app/.netlify/functions/api/users/update', values)
         message.success("User Updated Successfully")
         localStorage.setItem('user', JSON.stringify(user.data))
         setTimeout(() => {
@@ -74,7 +74,7 @@ export const updateUser = (values) => async dispatch =>{
 export const getAllUsers = () => async (dispatch) => {
     dispatch({ type: "LOADING", payload: true });
     try {
-      const response = await axios.get("http://localhost:5000/api/users/getallusers");
+      const response = await axios.get("https://nujobs-backend.netlify.app/.netlify/functions/api/users/getallusers");
       dispatch({ type: "GET_ALL_USERS", payload: response.data });
       dispatch({ type: "LOADING", payload: false });
     } catch (error) {
